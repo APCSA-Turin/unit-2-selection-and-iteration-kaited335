@@ -1,4 +1,3 @@
-package U2T2;
 
 public class SelectionMadness {
 
