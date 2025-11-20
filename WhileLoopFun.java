@@ -13,8 +13,13 @@ public class WhileLoopFun {
        */
   public void printDigits(int number) {
     int digits = (int) (Math.log10(number) + 1);
+    int subtract = 1;
     while (digits != 0) {
-        
+        int print = number % (digits * 10);
+        System.out.println(print);
+        number = number - (number % (digits * 10)) * (subtract);
+        digits--;
+        subtract *= 10;
     }
   }
 
@@ -27,6 +32,13 @@ public class WhileLoopFun {
               try it this time using a while loop.
        */
   public int countLetter(String word, String letter) {
+    int count = 0;
+    while (word.indexOf(letter) != -1) {
+      int find = word.indexOf(letter);
+      word = word.substring(0 , find) + word.substring(find + 1);
+      count ++;
+    }
+    return count;
   }
 
 /**Returns the maximum number of times that number can be doubled before it exceeds threshold
@@ -51,6 +63,12 @@ public class WhileLoopFun {
            Precondition: number > 0, threshold > 0
      */
   public int maxDoubles(int number, int threshold) {
+    int count = 0;
+    while (number < threshold) {
+      number = number * number;
+      count ++;
+    }
+    return count - 1;
   }
 
   /**Returns true if number is prime (i.e. it has exactly two divisors: 1 and itself) and false
@@ -66,5 +84,15 @@ public class WhileLoopFun {
                    but 1 has only a single divisor! (don’t believe it? Google it!)
        */
   public boolean isPrime(int number) {
+    if (number == 1) {
+      return false;
+    }
+    int count = 1;
+    while ((count * count) < number) {
+      if ((number % count) == 0) {
+        return false;
+      } 
+    }
+    return true;
   }
 }
