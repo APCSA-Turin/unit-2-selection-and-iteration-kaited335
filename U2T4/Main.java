@@ -2,8 +2,13 @@ package U2T4;
 
 public class Main {
    public static void main(String[] args) {
-     int x = 2; // change this up
-     int y = 3; // change this up
-     System.out.println(!(x < 3 && y > 2));
+     int x = 7;
+int y = 9;
+
+if (!(x <= 6 || !(y <= 8))) {
+   System.out.println("first case");
+} else {
+   System.out.println("second case");
+}
    }
 }
