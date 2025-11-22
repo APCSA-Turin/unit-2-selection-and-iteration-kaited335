@@ -12,16 +12,12 @@ public class WhileLoopFun {
                               lines)
        */
   public void printDigits(int number) {
-    int digits = (int) (Math.log10(number) + 1);
-    int subtract = 1;
-    while (digits != 0) {
-        int print = number % (digits * 10);
-        System.out.println(print);
-        number = number - (number % (digits * 10)) * (subtract);
-        digits--;
-        subtract *= 10;
+    while (number != 0) {
+      System.out.println(number % (10));
+      number = (number - (number % 10))/10;
     }
   }
+  
 
   /** Returns the number of times letter occurs in word.
               Example:  If word is "apple" and letter is "p",  this methods returns 2
@@ -63,10 +59,16 @@ public class WhileLoopFun {
            Precondition: number > 0, threshold > 0
      */
   public int maxDoubles(int number, int threshold) {
+    if (number > threshold) {
+      return 0;
+    }
     int count = 0;
     while (number < threshold) {
-      number = number * number;
+      number = number + number;
       count ++;
+    }
+    if (number == threshold) {
+      return count;
     }
     return count - 1;
   }
@@ -87,11 +89,12 @@ public class WhileLoopFun {
     if (number == 1) {
       return false;
     }
-    int count = 1;
+    int count = 2;
     while ((count * count) < number) {
       if ((number % count) == 0) {
         return false;
       } 
+      count ++;
     }
     return true;
   }
